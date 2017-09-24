@@ -1,0 +1,29 @@
+{% extends "job51/layout.html" %}
+{% block title %} 关键词 {% endblock %}
+{% block style %}
+    <style>
+         .list-content li{
+              line-height: 30px;
+         }
+        .list-content li div{
+            font-size: 16px!important;
+        }
+    </style>
+{% endblock %}
+{% block MainContent %}
+    <div class="breadcrumb">
+        <li>职位</li>
+        <li>关键词</li>
+    </div>
+    <div class="page-header ">
+        <h1>关键词统计</h1>
+    </div>
+        <ul class="list-unstyled list-content">
+        {% for key in keywords %}
+              <li><div class="col-sm-2">{{ key.key_word }}：</div><div class="col-sm-10 text-info">{{ key.count }}</div></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+
+

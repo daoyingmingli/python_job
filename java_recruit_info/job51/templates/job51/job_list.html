@@ -1,0 +1,93 @@
+
+{% extends "job51/layout.html" %}
+{% block title %} 职位列表页 {% endblock %}
+{% block MainContent %}
+    <div class="breadcrumb">
+        <li>职位</li>
+        <li>列表页</li>
+    </div>
+    <div class="page-header ">
+        <h1>职位列表页面</h1>
+    </div>
+    <div id="table"></div>
+    <input type="hidden" id="list_url" value="{% url 'job:job_list_ajax' %}">
+    <script>
+        $(function () {
+            var list_url = $("#list_url").val();
+            $("#table").bootstrapTable({
+                url:list_url,
+                method:'get',
+                dataType:'json',
+                contentType: "application/x-www-form-urlencoded",
+                striped: true, //是否显示行间隔色
+                sortable:true,
+                sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+                showColumns:true,
+                search: true,//是否显示表格搜索，此搜索是客户端搜索，不会进服务端
+                pagination:true,
+                queryParams:function () {
+                    return {};
+                },
+                minimumCountColumns:2,
+                pageNumber:1,                       //初始化加载第一页，默认第一页
+                pageSize: 20,                       //每页的记录行数（*）
+                pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+                uniqueId: "job_id",                     //每一行的唯一标识，一般为主键列
+                showExport: true,
+                exportDataType: 'all',
+                columns:[
+                    {
+                        field: '',
+                            title: '序号',
+                            formatter: function (value, row, index) {
+                            return index+1;
+                         }
+                    },
+                    {
+                        field : 'job_id',
+                        title : '编号',
+                        width: '10%',
+                        align : 'center',
+                        valign : 'middle',
+                        sortable : true
+                    }, {
+                        field : 'job_name',
+                        title : '职位名称',
+                        width:  '25%',
+                        align : 'center',
+                        valign : 'middle',
+                        sortable : true
+                    }, {
+                        field : 'job_company_name',
+                        title : '企业名称',
+                        width:  '20%',
+                        align : 'center',
+                        valign : 'middle'
+                    }, {
+                        field : 'job_area_name',
+                        title : '地区',
+                        width:  '10%',
+                        align : 'center',
+                        valign : 'middle',
+                        sortable : true
+                    }, {
+                        field : 'job_salary',
+                        title : '薪水',
+                        width:  '10%',
+                        align : 'center',
+                        valign : 'middle'
+                    }, {
+                        title : '操作',
+                        width:  '20%',
+                        align : 'center',
+                        valign : 'left',
+                        formatter : function (value, row, index){
+                            var html = '<a href="/job/job/detail/'+ row.job_id +'"  class = "btn btn-sm btn-primary">详情页</a> &nbsp;';
+                            html +=  '<a href="/job/job/keyword/'+ row.job_id +'"  class = "btn  btn-sm btn-success">关键字</a>';
+                            return html;
+                        }
+                    }]
+            })
+        });
+    </script>
+ {% endblock %}

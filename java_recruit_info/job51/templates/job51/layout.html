@@ -1,0 +1,66 @@
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <title>{% block title %} JOB {% endblock %}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-table.css' %}">
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/bootstrap-table.js' %}"></script>
+    <script src="{% static 'js/bootstrap-table-zh-CN.js' %}"></script>
+    <style>
+        .navbar-brand{
+            font-weight: 300;
+            font-size: x-large;
+            font-family: fantasy;
+        }
+        .Main{
+            margin-top: 50px;
+            min-height: 300px;
+        }
+        .footer{
+            margin-top: 20px;
+            min-width: 100%;
+            text-align: center;
+        }
+        .fixed-table-body{
+            height: inherit !important;
+        }
+    </style>
+    {% block style %} {% endblock %}
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top header-logo">
+        <div class="container">
+            <div class="navbar-header">
+                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                    <li><a class="icon-bar" href="{% url 'job:job_list' %}">职位列表</a></li>
+                    <li><a class="icon-bar" href="#">关键词统计</a></li>
+                </button>
+                <a class="navbar-brand">job.com</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a class="btn-lg"  href="{% url 'job:job_list' %}">职位列表</a></li>
+                    <li><a class="btn-lg" href="{% url 'job:segment_count_sum'%}">关键词统计</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">登陆</a></li>
+                    <li><a href="#">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container Main">
+       {% block MainContent %} Main Content {% endblock %}
+    </div>
+    <div class="container footer">
+       <div class="copyright">
+             Copyright © 2017-2017    <strong><a href="#" target="_blank">职位统计</a></strong>&nbsp;
+             All Rights Reserved. 备案号：520
+       </div>
+    </div>
+</body>
+</html>

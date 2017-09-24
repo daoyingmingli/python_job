@@ -1,0 +1,92 @@
+{% extends "job51/layout.html" %}
+{% load staticfiles %}
+{% block title %} 职位列表页 {% endblock %}
+{% block MainContent %}
+    <div class="breadcrumb">
+        <li>统计</li>
+        <li>关键词</li>
+    </div>
+   <div class="page-header ">
+        <span class="h3">关键词图表统计</span>
+        <span class="h4 pull-right">
+            <a href="{% url 'job:segment_count_sum'%}">列表展示</a>
+        </span>
+    </div>
+    <div id="main" style="height: 600px"></div>
+    <script src="{% static 'js/echarts-all.js' %}"></script>
+    <script>
+        var myChart = echarts.init(document.getElementById('main'));
+
+        $(function () {
+             $.get('/job/job/segment_count_sum/chart/', function (data) {
+                var resp = JSON.parse(data);
+                 option = {
+                    tooltip : {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'shadow',
+                            label: {
+                                show: true
+                            }
+                        }
+                    },
+
+                    calculable : true,
+                    legend: {
+                        data:['关键词', '总数'],
+                        itemGap: 5
+                    },
+                    grid: {
+                        top: '12%',
+                        left: '1%',
+                        right: '10%',
+                        containLabel: true
+                    },
+                    xAxis: [
+                        {
+                            type : 'category',
+                            data : resp.keys
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type : 'value',
+                            name : 'KeyWord'
+                        }
+                    ],
+                    dataZoom: [
+                        {
+                            show: true,
+                            start: 94,
+                            end: 100
+                        },
+                        {
+                            type: 'inside',
+                            start: 94,
+                            end: 100
+                        },
+                        {
+                            show: true,
+                            yAxisIndex: 0,
+                            filterMode: 'empty',
+                            width: 30,
+                            height: '80%',
+                            showDataShadow: false,
+                            left: '93%'
+                        }
+                    ],
+                    series : [
+                        {
+                            name: '总数',
+                            type: 'bar',
+                            data: resp.values
+                        }
+                    ]
+                };
+                 myChart.setOption(option);
+             });
+        })
+    </script>
+ {% endblock %}
+
+

@@ -1,0 +1,68 @@
+{% extends "job51/layout.html" %}
+{% load staticfiles %}
+{% block title %} 职位列表页 {% endblock %}
+{% block MainContent %}
+    <div class="breadcrumb">
+        <li>统计</li>
+        <li>关键词</li>
+    </div>
+    <div class="page-header ">
+        <span class="h3">关键词列表统计</span>
+        <span class="h4 pull-right">
+            <a href="{% url 'job:segment_count_sum'%}?jump_to=1">图表展示</a>
+        </span>
+    </div>
+     <div id="table"></div>
+    <input type="hidden" id="ajx_url" value="{% url 'job:segment_count_sum_ajax'%}">
+    <script>
+        $(function () {
+            var ajx_url = $("#ajx_url").val();
+            $("#table").bootstrapTable({
+                url:ajx_url,
+                method:'get',
+                dataType:'json',
+                contentType: "application/x-www-form-urlencoded",
+                striped: true, //是否显示行间隔色
+                sortable:true,
+                sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
+                showColumns:true,
+                search: true,//是否显示表格搜索，此搜索是客户端搜索，不会进服务端
+                pagination:true,
+                queryParams:function () {
+                    return {};
+                },
+                minimumCountColumns:2,
+                pageNumber:1,                       //初始化加载第一页，默认第一页
+                pageSize: 20,                       //每页的记录行数（*）
+                pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+                uniqueId: "job_id",                     //每一行的唯一标识，一般为主键列
+                showExport: true,
+                exportDataType: 'all',
+                columns:[
+                    {
+                        field: '',
+                        title: '序号',
+                        align : 'center',
+                        formatter: function (value, row, index) {
+                             return index+1;
+                         }
+                    },
+                    {
+                        field : 'key_word',
+                        title : '关键词',
+                        width: '50%',
+                        align : 'center',
+                        valign : 'middle',
+                        sortable : true
+                    }, {
+                        field : 'count',
+                        title : '总数',
+                        width:  '50%',
+                        align : 'center',
+                        valign : 'middle',
+                        sortable : true
+                    }]
+            })
+        });
+    </script>
+ {% endblock %}

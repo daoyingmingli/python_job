@@ -1,0 +1,32 @@
+{% extends "job51/layout.html" %}
+{% block title %} 职位详情页 {% endblock %}
+{% block style %}
+    <style>
+         .list-content li{
+              line-height: 30px;
+         }
+        .list-content li div{
+            font-size: 16px!important;
+        }
+    </style>
+{% endblock %}
+{% block MainContent %}
+      <div class="breadcrumb">
+        <li>职位</li>
+        <li>详情页</li>
+    </div>
+    <div class="page-header ">
+        <h1>职位详情页</h1>
+    </div>
+
+    <ul class="list-unstyled list-content">
+        <li><div class="col-sm-2">公司类型：</div><div class="col-sm-10">{{ detail.job_company_type }}</div></li>
+        <li><div class="col-sm-2">发布时间：</div><div class="col-sm-10">{{ detail.job_publish_time }}</div></li>
+        <li><div class="col-sm-2">地址：</div><div class="col-sm-10">{{ detail.job_address }}</div></li>
+        <li><div class="col-sm-2">规模：</div><div class="col-sm-10">{{ detail.job_company_scale }}</div></li>
+        <li><div class="col-sm-2">招聘要求：</div><div class="col-sm-10">{{ detail.job_require_other }}</div></li>
+        <li><div class="col-sm-2">职位描述：</div><div class="col-sm-10 text-info">{{ detail.job_description }}</div></li>
+        <li><div class="col-sm-2">标签：</div><div class="col-sm-10">{{ detail.job_position_tag }}</div></li>
+        <li><div class="col-sm-2">福利：</div><div class="col-sm-10">{{ detail.job_welfare }}</div></li>
+    </ul>
+ {% endblock %}

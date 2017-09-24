@@ -1,0 +1,82 @@
+spider_html_template = '''
+<!DOCTYPE html>
+<html>
+<body>
+<div class="page1">
+	<input type="hidden" value="search/jobdetail" id="template">
+	<input type="hidden" id="domain" value="http://m.51job.com/">
+	<input type="hidden" id="imgpath" value="http://img01.51jobcdn.com/im/mobile/m"/>
+	<input id="location_url" type="hidden" value="http://m.51job.com/ajax/in/showjobarea.ajax.php?template=search/jobdetail">
+	<div class="wp">
+		<div class="mtb">
+			<div class="xq">
+				<p class="xtit">高级JAVA开发工程师（研发中心）</p>
+				<a class="xqa" href="http://m.51job.com/search/codetail.php?coid=290053">创业软件股份有限公司</a>
+				<div class="xqd">
+					<label class="l2 at"><span>性质</span>民营公司</label>
+					<label class="l2 at"><span>发布</span>2017/09/18</label>
+					<label class="c_orange l2 at"><span>薪资</span>15-20万/年</label>
+					<label class="l2 at"><span>地区</span>杭州-滨江区</label>
+					<label class="l2 at"><span>规模</span>1000-5000人</label>
+					<label><span>招聘</span>若干人 | 本科 | 3-4年工作经验</label>				
+				</div>
+			</div>
+			<a class="dz" id="checkmap">
+				<div class="area dicons_before">杭州市滨江区越达巷92号创业智慧医疗软件生产基地（近四桥）</div>
+			</a>
+		</div>		
+		<div class="mtb">
+			<div class="sb">
+				<div class="tit dicons_after t2">职位描述</div>
+			</div>
+			<div class="qyw">
+				<div class="word">
+					<div class="aox h20">
+						<article>
+							工作描述：<br />
+							1、参与项目的调研，理解需求，进行详细的需求分析。<br />
+							2、理解任务需求, 完成功能设计及制定编码任务。<br />
+							3、完成核心编码工作，并指导和带领他人完成既定任务。<br />
+							<br />
+							任职资格：<br />
+							1、计算机或相关专业全日制大专及以上学历。<br />
+							2、具有3年以上j2ee实际项目开发经验，具有医院信息化系统开发经验者优先；<br />
+							3、具备oop编程思想，熟悉设计模式和算法；<br />
+							4、参与过5人以上项目完整开发流程；<br />
+							5、精通mvc框架，熟悉struts、spring、 spring\hibernate、junit、junit\maven等开源框架或工具；<br />
+							6、熟悉jboss、tomcat、jetty等应用服务器；<br />
+							7、熟悉oracle数据库开发，熟练使用sql语言，有一定的oracle优化、维护经验；<br />
+							8、了解html、ajax、javascript、css\css\css\css\css等前端技术；<br />
+							9、有较强的性能优化及问题排查、解决能力；<br />
+							10、有强烈的责任心 ，团队意识强；<br />
+							11、关注业界动态和发展方向。						
+						</article>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<section class="mtb">
+			<div class="sb"><div class="tit dicons_after t3">职位标签</div></div>
+			<div class="xqq">
+				<span>周末双休</span>
+				<span>带薪年假</span>
+				<span>奖金丰厚</span>
+				<span>交通补助</span>
+				<span>出差补贴</span>
+				<span>话补</span>
+				<span>高温补贴</span>			
+			</div>
+		</section>
+		<section class="mtb">
+			<div class="sb"><div class="tit dicons_after t4">福利待遇</div></div>
+			<div class="xqq">
+				<span>五险一金</span><span>定期体检</span><span>交通补贴</span><span>餐饮补贴</span><span>通讯补贴</span><span>年终奖金</span><span>专业培训</span>	
+			</div>
+		</section>
+	</div>
+</div>
+</body>
+</html>
+'''
